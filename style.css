@@ -27,19 +27,20 @@ main{
 
 .container{
     width: 80vw;
+    flex-direction: column;
     height: 70vh;
     background-color: #ECF0F1;
     padding-top: 25px;
     border-radius: 5px;
     display: flex;
     justify-content: flex-start;
+    padding: 25px;
 }
 
 
 
 .list > li{
     margin-bottom: 15px;
-    margin-left: 50px;
     font-family: 'Montserrat', sans-serif;
     font-weight: 400;
     font-size: 1.1rem;
@@ -66,7 +67,7 @@ main{
 .list{
     display: flex;
     justify-content: flex-start;
-    align-items: center;
+    align-items: flex-start;
     flex-direction: column;
     text-align: end;
 }
