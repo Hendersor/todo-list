@@ -30,7 +30,6 @@ main{
     flex-direction: column;
     height: 70vh;
     background-color: #ECF0F1;
-    padding-top: 25px;
     border-radius: 5px;
     display: flex;
     justify-content: flex-start;
