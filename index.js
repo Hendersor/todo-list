@@ -1,26 +1,14 @@
-let task = document.getElementById('input');
-task.addEventListener('keyup', input);
+const dinamicList = document.querySelector(".dinamic-list");
 
+const arrayItem =  ["Prueba1", "Prueba2"];
+const fragment = document.createDocumentFragment();
+const template = document.querySelector(".template").content;
 
-function input (event){
-const code = event.keyCode;
-const taskValue = task.value;
-   if(code === 13){
-       if(task.value.length > 0){
-        const area = document.querySelector('ul.list');
-        const li = document.createElement('li');
-        area.appendChild(li);
-        const userTask = document.createTextNode(taskValue);
-        li.appendChild(userTask);
-        deleteInput();
-       }
+arrayItem.forEach(item => {
+    template.querySelector(".list").textContent = item;
+    const clone = template.cloneNode(true);
+    fragment.appendChild(clone);
+});
 
-   }
-}
-
-function deleteInput(){
-    let task = document.getElementById('input').value = '';
-
-}
-
+dinamicList.appendChild(fragment);
 
