@@ -11,8 +11,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
 </head>
 <body>
-    <main>
-        <input id="input" type="text">
+    <form onsubmit="return false;">
+        <input placeholder="Ingrese tarea" id="input" type="text" action = "#">
+
         <ul class="dinamic-list"></ul>
         <template class="template">
             <li class="list">
@@ -20,7 +21,7 @@
             </li>
         </template>
         <button id="btn"> <ion-icon class="icon" name="trash-outline"></ion-icon> </button>
-    </main>
+    </form>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script src="index.js"> </script>

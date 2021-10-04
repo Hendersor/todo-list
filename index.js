@@ -1,6 +1,9 @@
 const dinamicList = document.querySelector(".dinamic-list");
+const input = document.querySelector("#input");
+const inputValue = document.querySelector("#input").value;
 
-const arrayItem =  ["Prueba1", "Prueba2"];
+
+const arrayItem =  [];
 const fragment = document.createDocumentFragment();
 const template = document.querySelector(".template").content;
 
@@ -12,3 +15,12 @@ arrayItem.forEach(item => {
 
 dinamicList.appendChild(fragment);
 
+function enter(){
+    if(inputValue.keyCode === 13 && inputValue.trim() === ' '){
+        console.log("No esta vacio");
+    }else{
+        console.log("Esta vacio");
+    }
+}
+
+input.addEventListener('keyup', enter)
