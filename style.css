@@ -26,7 +26,8 @@ form{
 
 
 .dinamic-list{
-    width: 80vw;
+    max-width: 500px;
+    min-width: 500px;
     flex-direction: column;
     height: 70vh;
     background-color: #ECF0F1;
@@ -34,6 +35,7 @@ form{
     display: flex;
     justify-content: flex-start;
     padding: 25px;
+    margin: 0, 20px, 0, 20px;
 }
 
 
