@@ -15,12 +15,16 @@ arrayItem.forEach(item => {
 
 dinamicList.appendChild(fragment);
 
-function enter(){
-    if(inputValue.keyCode === 13 && inputValue.trim() === ' '){
-        console.log("No esta vacio");
-    }else{
-        console.log("Esta vacio");
+function validarEnter(e){
+    if(e.keyCode === 13 && input.value.trim() === "" ){
+        console.log("Esta vacio"); //Agregar animacion
+    }
+    if(e.keyCode === 13 && input.value.trim() !== "" ){
+        console.log("Tiene contenido");
     }
 }
+input.addEventListener('keyup', validarEnter)
 
-input.addEventListener('keyup', enter)
+function pushArray(){
+    arrayItem.push(input.value);
+}
