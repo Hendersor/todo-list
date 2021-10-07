@@ -40,13 +40,14 @@ form{
 
 
 
-.dinamic-list > li{
+.list-container > li{
     margin-bottom: 15px;
     font-family: 'Montserrat', sans-serif;
     font-weight: 400;
     font-size: 1.1rem;
     cursor: pointer;
     list-style: none;
+    
 }
 
 #btn{
@@ -69,8 +70,29 @@ form{
 .list{
     display: flex;
     justify-content: flex-start;
-    align-items: flex-start;
+    align-items: center;
     flex-direction: column;
     text-align: end;
 }
 
+.checkmark, .close {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    margin-left: 20px;
+}
+
+.checkmark{
+    color:green;
+}
+
+.close{
+    color: red;
+}
+
+
+.list-container{
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+}

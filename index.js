@@ -7,7 +7,7 @@ const fragment = document.createDocumentFragment();
 const template = document.querySelector(".template").content;
 
 
-
+input.focus();
 input.addEventListener('keyup', inputValidation)
 
 function inputValidation(e){
