@@ -15,18 +15,58 @@ function inputValidation(e){
         console.log("Esta vacio"); //Agregar animacion
     }
     if(e.keyCode === 13 && input.value.trim() !== "" ){
-        arrayTask.push(input.value);
+        const taskObject = {
+            id: Date.now(),
+            task: input.value,
+            status: false,
+        }
+        console.log(taskObject);
+        arrayTask.push(taskObject);
         deployTask();
         input.value = "";
     }
 }
 
 function deployTask(){
-    arrayTask.forEach(item => {
+    Object.values(arrayTask).forEach(item => {
         dinamicList.innerHTML = "";
-        template.querySelector(".list").textContent = item;
+        template.querySelector(".list").textContent = item.task;
         const clone = template.cloneNode(true);
+        clone.querySelectorAll('.btn')[0].dataset.id = item.id;
+        clone.querySelectorAll('.btn')[1].dataset.id = item.id;
         fragment.appendChild(clone);
     });
     dinamicList.appendChild(fragment);
+    
+}
+
+
+const selectTask = document.querySelector(".dinamic-list")
+
+selectTask.addEventListener('click', taskDone);
+
+function taskDone(e){
+   if(e.target.name === "checkmark-outline"){
+       
+      /*  console.log(arrayTask[e.target.dataset.id].status); */
+   
+        arrayTask.find(item => {
+            if(e.target.dataset.id == item.id){
+                console.log(true)
+                console.log(arrayTask[e.target.dataset.id].status);
+            }
+            else{
+                console.log(false)
+            }
+        })
+
+        
+
+   }
+   if(e.target.name === "close-outline"){
+       console.log("Tarea borrada");
+        console.log(e.target);
+
+   }
+   e.stopPropagation();
 }
