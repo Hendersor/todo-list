@@ -46,19 +46,20 @@ const selectTask = document.querySelector(".dinamic-list")
 selectTask.addEventListener('click', taskDone);
 
 function taskDone(e){
+    const clone = template.cloneNode(true)
    if(e.target.name === "checkmark-outline"){
-       
-      /*  console.log(arrayTask[e.target.dataset.id].status); */
-   
-        arrayTask.find(item => {
+
+        arrayTask.forEach(item => {
             if(e.target.dataset.id == item.id){
-                console.log(true)
-                console.log(arrayTask[e.target.dataset.id].status);
+                item.status = true
+                clone.querySelector(".list").style.textDecoration = "line-through"
             }
             else{
                 console.log(false)
             }
         })
+
+                       
 
         
 
@@ -70,3 +71,4 @@ function taskDone(e){
    }
    e.stopPropagation();
 }
+
