@@ -20,7 +20,6 @@ function inputValidation(e){
             task: input.value,
             status: false,
         }
-        console.log(taskObject);
         arrayTask.push(taskObject);
         deployTask();
         input.value = "";
@@ -28,10 +27,17 @@ function inputValidation(e){
 }
 
 function deployTask(){
+    dinamicList.innerHTML = "";
     Object.values(arrayTask).forEach(item => {
-        dinamicList.innerHTML = "";
-        template.querySelector(".list").textContent = item.task;
         const clone = template.cloneNode(true);
+        clone.querySelector(".list").textContent = item.task;
+        
+       if(item.status){
+        clone.querySelector(".list").style.textDecoration = "line-through";
+       }else{
+        clone.querySelector(".list").style.textDecoration = "none";
+       }
+
         clone.querySelectorAll('.btn')[0].dataset.id = item.id;
         clone.querySelectorAll('.btn')[1].dataset.id = item.id;
         fragment.appendChild(clone);
@@ -41,34 +47,31 @@ function deployTask(){
 }
 
 
-const selectTask = document.querySelector(".dinamic-list")
+const selectTask = document.querySelector(".dinamic-list");
 
 selectTask.addEventListener('click', taskDone);
 
 function taskDone(e){
-    const clone = template.cloneNode(true)
-   if(e.target.name === "checkmark-outline"){
-
+   
+    if(e.target.name === "checkmark-outline"){
         arrayTask.forEach(item => {
             if(e.target.dataset.id == item.id){
-                item.status = true
-                clone.querySelector(".list").style.textDecoration = "line-through"
+                item.status = true; 
+                deployTask();
             }
-            else{
-                console.log(false)
-            }
-        })
-
-                       
-
-        
-
+        })             
    }
-   if(e.target.name === "close-outline"){
-       console.log("Tarea borrada");
-        console.log(e.target);
 
+   if(e.target.name === "close-outline"){
+    arrayTask.forEach(item => {
+        if(e.target.dataset.id == item.id){
+            item.status = false;
+            deployTask();
+        }
+    })    
    }
    e.stopPropagation();
 }
+
+
 
