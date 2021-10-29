@@ -2,7 +2,13 @@ const dinamicList = document.querySelector(".dinamic-list");
 const input = document.querySelector("#input");
 
 
-const arrayTask =  [];
+let arrayTask =  [];
+document.addEventListener('DOMContentLoaded', () =>{
+    if(localStorage.getItem('tareas')){
+        arrayTask = JSON.parse(localStorage.getItem('tareas'));
+    }
+    deployTask();
+})
 const fragment = document.createDocumentFragment();
 const template = document.querySelector(".template").content;
 
@@ -27,6 +33,9 @@ function inputValidation(e){
 }
 
 function deployTask(){
+    localStorage.setItem('tareas', JSON.stringify(arrayTask))
+
+
     dinamicList.innerHTML = "";
     Object.values(arrayTask).forEach(item => {
         const clone = template.cloneNode(true);
