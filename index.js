@@ -34,8 +34,10 @@ function deployTask(){
         
        if(item.status){
         clone.querySelector(".list").style.textDecoration = "line-through";
+        clone.querySelectorAll(".btn")[0].setAttribute('name','refresh-outline')
        }else{
         clone.querySelector(".list").style.textDecoration = "none";
+        clone.querySelectorAll('.btn')[0].setAttribute('name', 'checkmark-outline')
        }
 
         clone.querySelectorAll('.btn')[0].dataset.id = item.id;
@@ -62,7 +64,7 @@ function taskDone(e){
         })             
    }
 
-   if(e.target.name === "close-outline"){
+   if(e.target.name === "refresh-outline"){
     arrayTask.forEach(item => {
         if(e.target.dataset.id == item.id){
             item.status = false;
@@ -70,8 +72,15 @@ function taskDone(e){
         }
     })    
    }
+
+   if(e.target.name === "close-outline"){
+            const removeIndex = arrayTask.findIndex(item => item.id == e.target.dataset.id);
+            arrayTask.splice( removeIndex, 1);
+            deployTask();
+        }
    e.stopPropagation();
 }
+
 
 
 
